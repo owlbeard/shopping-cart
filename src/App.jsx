@@ -24,7 +24,7 @@ function App() {
     <Context.Provider value={data}>
       <div className="container flex flex-col h-screen items-center text-white">
         <Header />
-        <div className="container flex flex-grow items-center justify-center ">
+        <div className="content container flex flex-grow items-center justify-center ">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/shop" element={<Shop />} />

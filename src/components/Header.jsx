@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import Icon from '../assets/cart.svg';
 import Bars from '../assets/bars.png';
@@ -12,6 +12,8 @@ export default function Header() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [nav, setNav] = useState(false);
   const { cart } = useContext(Context);
+  const cartRef = useRef();
+  const navRef = useRef();
   useEffect(() => {
     const handleWindowResize = () => {
       setWindowWidth(window.innerWidth);
@@ -23,6 +25,13 @@ export default function Header() {
       window.removeEventListener('resize', handleWindowResize);
     };
   }, []);
+  useEffect(() => {
+    const content = document.querySelector('.content');
+    content.addEventListener('click', (e) => {
+      console.log(e.clientX, e.clientY);
+      handleClick(e);
+    });
+  }, [clicked, nav]);
   const checkout = function () {
     setClicked(true);
   };
@@ -31,6 +40,34 @@ export default function Header() {
   };
   const open = function () {
     setNav(!nav);
+  };
+  const handleClick = (e) => {
+    if (clicked === true) {
+      console.log(clicked);
+      const dialogDimensions = cartRef.current.getBoundingClientRect();
+      console.log(dialogDimensions);
+      if (
+        e.clientX < dialogDimensions.left ||
+        e.clientX > dialogDimensions.right ||
+        e.clientY < dialogDimensions.top ||
+        e.clientY > dialogDimensions.bottom
+      ) {
+        setClicked(false);
+      }
+    }
+    if (nav === true) {
+      console.log(nav);
+      const dialogDimensionsTwo = navRef.current.getBoundingClientRect();
+      if (
+        e.clientX < dialogDimensionsTwo.left ||
+        e.clientX > dialogDimensionsTwo.right ||
+        e.clientY < dialogDimensionsTwo.top ||
+        e.clientY > dialogDimensionsTwo.bottom
+      ) {
+        setNav(false);
+      }
+    }
+    console.log(clicked, nav);
   };
   return (
     <div className="container flex justify-between items-center pt-4">
@@ -102,6 +139,7 @@ export default function Header() {
         </nav>
       ) : (
         <nav
+          ref={navRef}
           animate={{ x: 0 }}
           initial={{ x: '200%' }}
           transition={{ duration: 0.5 }}
@@ -165,6 +203,7 @@ export default function Header() {
       )}
       {clicked ? (
         <m.div
+          ref={cartRef}
           animate={{ x: 0 }}
           initial={{ x: '200%' }}
           transition={{ duration: 0.5 }}

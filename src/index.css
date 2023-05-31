@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Comfortaa', cursive;
+}
+
+button:active {
+  transform: scale(1.1);
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.white {
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(238deg)
+    brightness(111%) contrast(101%);
+}
+
+#checkout::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+#checkout::-webkit-scrollbar {
+  width: 8px;
+  background-color: transparent;
+}
+
+#checkout::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: #202020;
+}
+
+.active {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}

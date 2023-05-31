@@ -37,7 +37,7 @@ export default function Header() {
       <Link to="/">
         <h1 className="p-2 lg:text-6xl sm:text-4xl text-2xl">SmolPliance</h1>
       </Link>
-      {windowWidth >= 640 ? (
+      {windowWidth >= 768 ? (
         <nav className="container flex justify-end items-center gap-10 text-xl ">
           <NavLink
             to="/"

@@ -28,7 +28,6 @@ export default function Header() {
   useEffect(() => {
     const content = document.querySelector('.content');
     content.addEventListener('click', (e) => {
-      console.log(e.clientX, e.clientY);
       handleClick(e);
     });
   }, [clicked, nav]);
@@ -43,9 +42,7 @@ export default function Header() {
   };
   const handleClick = (e) => {
     if (clicked === true) {
-      console.log(clicked);
       const dialogDimensions = cartRef.current.getBoundingClientRect();
-      console.log(dialogDimensions);
       if (
         e.clientX < dialogDimensions.left ||
         e.clientX > dialogDimensions.right ||
@@ -56,7 +53,6 @@ export default function Header() {
       }
     }
     if (nav === true) {
-      console.log(nav);
       const dialogDimensionsTwo = navRef.current.getBoundingClientRect();
       if (
         e.clientX < dialogDimensionsTwo.left ||
@@ -67,7 +63,6 @@ export default function Header() {
         setNav(false);
       }
     }
-    console.log(clicked, nav);
   };
   return (
     <div className="container flex justify-between items-center pt-4">

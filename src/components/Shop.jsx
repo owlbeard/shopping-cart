@@ -78,27 +78,27 @@ function ShopItem({ src, name, price }) {
     } else setCart([...cart, item]);
   };
   return (
-    <div className="container flex flex-col p-4 justify-center items-center gap-2 rounded-xl shadow-the hover:scale-110 transition-transform">
+    <div className="container flex flex-col p-4 justify-center items-center gap-2 rounded-xl shadow-the">
       <img className="rounded-xl h-48" src={src} alt={name} />
       <p className="item-name">{name}</p>
       <p className="item-price">{`$${state.price}`}</p>
       <div className="flex items-center gap-8">
         <button
-          className="p-2 rounded-fifty shadow-math bg-white text-black hover:scale-110 transition-transform"
+          className="p-2 rounded-fifty shadow-math bg-white text-black hover:scale-110 active:scale-90 transition-transform"
           onClick={subtract}
         >
           -
         </button>
         {state.count}
         <button
-          className="p-2 rounded-fifty shadow-math bg-white text-black hover:scale-110 transition-transform"
+          className="p-2 rounded-fifty shadow-math bg-white text-black hover:scale-110 active:scale-90 transition-transform"
           onClick={add}
         >
           +
         </button>
       </div>
       <button
-        className="p-2 rounded-full bg-grad hover:scale-110 transition-transform"
+        className="p-2 rounded-full bg-grad hover:scale-110 transition-transform active:scale-90"
         onClick={addToCart}
       >
         Add To Cart
